@@ -1,0 +1,38 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "delegatorAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "validatorAddress",
+        "type": "string"
+      }
+    ],
+    "name": "withdrawDelegatorRewards",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "denom",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          }
+        ],
+        "internalType": "struct Coin[]",
+        "name": "amount",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
