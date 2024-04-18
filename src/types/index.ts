@@ -1,4 +1,4 @@
-interface ValidatorsResponse {
+export interface ValidatorsResponse {
 	validators: {
 		operator_address: string
 		jailed: boolean
@@ -33,7 +33,7 @@ interface ValidatorsResponse {
 	}
 }
 
-interface DelegationsResponse {
+export interface DelegationsResponse {
 	delegation_responses: {
 		delegation: {
 			delegator_address: string

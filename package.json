@@ -13,7 +13,10 @@
   ],
   "scripts": {
     "test": "jest",
-    "build": "tsup src/index.ts"
+    "build": "tsup src/index.ts",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build"
   },
   "license": "MIT",
   "dependencies": {
