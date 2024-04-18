@@ -1,5 +1,4 @@
-# BounceBit Typescript SDK - BBScan
-
+# BBScan Typescript SDK for BounceBit
 
 ## Usage
 
