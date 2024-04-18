@@ -28,7 +28,7 @@ export class BounceBitClient {
 
 			return data
 		} else if (this.network === 'mainnet') {
-			throw new Error('Mannet not available now')
+			throw new Error('Mainnet not available now')
 		}
 	}
 
@@ -40,7 +40,7 @@ export class BounceBitClient {
 
 			return data
 		} else if (this.network === 'mainnet') {
-			throw new Error('Mannet not available now')
+			throw new Error('Mainnet not available now')
 		}
 	}
 
