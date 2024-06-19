@@ -1,3 +1,3 @@
 export * from './client'
-export * from './contact'
+export * from './contract'
 export * from './types'

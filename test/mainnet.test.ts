@@ -3,9 +3,9 @@ import { BounceBitClient } from '../src'
 
 describe('BounceBitCilent', () => {
 	const test_network = process.env.TEST_NETWORK
-	if (test_network !== 'testnet') return it('none', () => {})
+	if (test_network !== 'mainnet') return it('none', () => {})
 
-	const client = new BounceBitClient('testnet')
+	const client = new BounceBitClient('mainnet')
 
 	it('client.getvalidators', async () => {
 		const { avgAPY, totalValidators, validators } = await client.getValidators()
@@ -27,7 +27,7 @@ describe('BounceBitCilent', () => {
 		expect(Array.isArray(delegations)).toBe(true)
 	})
 
-	const testAction: string = 'getClaimTransaction'
+	const testAction: string = 'getUnstakeTransaction'
 	const privateKey = process.env.PRIVATE_KEY
 
 	if (privateKey) {
@@ -35,11 +35,11 @@ describe('BounceBitCilent', () => {
 		expect(wallet.address.toLowerCase()).toBe(address.toLowerCase())
 		const amount = parseUnits('0.1', 18)
 
-		// Validator: GMR (ethmvaloper1fxkptmhq7r485dwk0kwktwr3tmqx3nlrhm5px4)
+		// Validator: MetaOp (ethmvaloper12rzs4kgcsnjtjqvnewcl62stmdzqklm9atkqpg)
 
 		if (testAction === 'stake')
 			it('client.stake', async () => {
-				const tx = await client.stake(wallet, amount, 'ethmvaloper1fxkptmhq7r485dwk0kwktwr3tmqx3nlrhm5px4')
+				const tx = await client.stake(wallet, amount, 'ethmvaloper12rzs4kgcsnjtjqvnewcl62stmdzqklm9atkqpg')
 
 				const result = await tx.wait()
 
@@ -49,7 +49,7 @@ describe('BounceBitCilent', () => {
 
 		if (testAction === 'getStakeTransaction')
 			it('client.getStakeTransaction', async () => {
-				const txParams = await client.getStakeTransaction(address, amount, 'ethmvaloper1fxkptmhq7r485dwk0kwktwr3tmqx3nlrhm5px4')
+				const txParams = await client.getStakeTransaction(address, amount, 'ethmvaloper12rzs4kgcsnjtjqvnewcl62stmdzqklm9atkqpg')
 				const tx = await wallet.sendTransaction(txParams)
 
 				console.log('tx', tx.hash)
@@ -62,17 +62,16 @@ describe('BounceBitCilent', () => {
 
 		if (testAction === 'unstake')
 			it('client.unstake', async () => {
-				const tx = await client.unstake(wallet, amount, 'ethmvaloper1fxkptmhq7r485dwk0kwktwr3tmqx3nlrhm5px4')
+				const tx = await client.unstake(wallet, amount, 'ethmvaloper12rzs4kgcsnjtjqvnewcl62stmdzqklm9atkqpg')
 
 				const result = await tx.wait()
 
 				expect(result.status).toBe(1)
 				console.log('[unstake hash]', tx.hash)
 			})
-
 		if (testAction === 'getUnstakeTransaction')
 			it('client.getUnstakeTransaction', async () => {
-				const txParams = await client.getUnstakeTransaction(address, amount, 'ethmvaloper1fxkptmhq7r485dwk0kwktwr3tmqx3nlrhm5px4')
+				const txParams = await client.getUnstakeTransaction(address, amount, 'ethmvaloper12rzs4kgcsnjtjqvnewcl62stmdzqklm9atkqpg')
 				const tx = await wallet.sendTransaction(txParams)
 
 				const result = await tx.wait()
@@ -83,7 +82,7 @@ describe('BounceBitCilent', () => {
 
 		if (testAction === 'claim')
 			it('client.claim', async () => {
-				const tx = await client.claim(wallet, 'ethmvaloper1fxkptmhq7r485dwk0kwktwr3tmqx3nlrhm5px4')
+				const tx = await client.claim(wallet, 'ethmvaloper12rzs4kgcsnjtjqvnewcl62stmdzqklm9atkqpg')
 
 				const result = await tx.wait()
 
@@ -93,7 +92,7 @@ describe('BounceBitCilent', () => {
 
 		if (testAction === 'getClaimTransaction')
 			it('client.getClaimTransaction', async () => {
-				const txParams = await client.getClaimTransaction(address, 'ethmvaloper1fxkptmhq7r485dwk0kwktwr3tmqx3nlrhm5px4')
+				const txParams = await client.getClaimTransaction(address, 'ethmvaloper12rzs4kgcsnjtjqvnewcl62stmdzqklm9atkqpg')
 				const tx = await wallet.sendTransaction(txParams)
 
 				const result = await tx.wait()
