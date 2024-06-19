@@ -36,6 +36,6 @@ const txParams = client.getStakeTransaction("<your-address>", amount, validator_
 // const txParams = client.getUnstakeTransaction("<your-address>", amount, validator_address)
 // const txParams = client.getClaimTransaction("<your-address>", validator_address)
 
-const tx = await wallet.sendTransaction(txData)
+const tx = await wallet.sendTransaction(txParams)
 
 ``` 
