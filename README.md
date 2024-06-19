@@ -31,6 +31,8 @@ client.stake(signer, amount, validator_address)
 client.unstake(signer, amount, validator_address)
 client.claim(signer, validator_address)
 
+// Or
+
 // Get tx params and sendTransaction
 const txParams = client.getStakeTransaction("<your-address>", amount, validator_address)
 // const txParams = client.getUnstakeTransaction("<your-address>", amount, validator_address)
