@@ -2,13 +2,13 @@
 
 ## Usage
 
-Install :
+Install 
    
 ```bash
 npm install bbscan-ts-sdk
 ```
 
-Import:
+Import
 
 ```ts
 import { BounceBitClient } from "bbscan-ts-sdk";
