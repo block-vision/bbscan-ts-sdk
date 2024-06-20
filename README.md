@@ -49,7 +49,7 @@ import BigNumber from 'bignumber.js'
 // stake
 const stakeAllowance = await this.stakeAllowance(signerOrWallet.address)
 if (BigNumber(String(stakeAllowance)).isLessThan(String(amount))) {
-  const appoveTx = await client.approveAll(signerOrWallet)
+  const appoveTx = await client.approveAll(signerOrWallet) // approve stake + unstake
 
   await provider.waitForTransaction(appoveTx.hash)
 }
@@ -59,7 +59,7 @@ client.stake(signer, amount, validator_address)
 // unstake
 const unstakeAllowance = await this.unstakeAllowance(signerOrWallet.address)
 if (BigNumber(String(unstakeAllowance)).isLessThan(String(amount))) {
-  const appoveTx = await client.approveAll(signerOrWallet)
+  const appoveTx = await client.approveAll(signerOrWallet) // approve stake + unstake
 
   await provider.waitForTransaction(appoveTx.hash)
 }
