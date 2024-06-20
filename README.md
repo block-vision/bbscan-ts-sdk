@@ -15,13 +15,21 @@ import { BounceBitClient } from "bbscan-ts-sdk";
 
 const bbClient = new BounceBitClient("mainnet");
 
-bbClient.getValidators()
-bbClient.getDelegations("<your-address>")
+```
 
+Get validators and apy, get delegations
+// 
+```ts
+const { avgAPY, totalValidators, validators } = await bbClient.getValidators()
+const { totalReward, totalStaked, delegations } = await bbClient.getDelegations("<address>")
+```
+
+Stake, unstake, claim
+```ts
 // Sign directly
 import { Wallet, parseUnits, BrowserProvider} from 'ethers'
 
-const signer = new Wallet("<your-wallet>", bbClient.getProvider());
+const signer = new Wallet("<wallet>", bbClient.getProvider());
 // const signer = new BrowserProvider(window.ethereum)
 
 const amount = parseUnits('0.1', 18)
@@ -34,9 +42,9 @@ client.claim(signer, validator_address)
 // Or
 
 // Get tx params and sendTransaction
-const txParams = client.getStakeTransaction("<your-address>", amount, validator_address)
-// const txParams = client.getUnstakeTransaction("<your-address>", amount, validator_address)
-// const txParams = client.getClaimTransaction("<your-address>", validator_address)
+const txParams = client.getStakeTransaction("<address>", amount, validator_address)
+// const txParams = client.getUnstakeTransaction("<address>", amount, validator_address)
+// const txParams = client.getClaimTransaction("<address>", validator_address)
 
 const tx = await wallet.sendTransaction(txParams)
 
