@@ -67,14 +67,13 @@ if (BigNumber(String(unstakeAllowance)).isLessThan(String(amount))) {
 client.unstake(signer, amount, validator_address)
 ```
 
-```ts
-// Get tx params and sendTransaction
+Use tx params and sendTransaction
 
+```ts
 const txParams = client.getApproveAllTransaction("<address>")
 const txParams = client.getStakeTransaction("<address>", amount, validator_address)
 const txParams = client.getUnstakeTransaction("<address>", amount, validator_address)
 const txParams = client.getClaimTransaction("<address>", validator_address)
 
 const tx = await wallet.sendTransaction(txParams)
-
 ``` 
