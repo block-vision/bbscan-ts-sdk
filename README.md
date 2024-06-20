@@ -17,8 +17,7 @@ const bbClient = new BounceBitClient("mainnet");
 
 ```
 
-Get validators and apy, get delegations
-// 
+Get validators and APY, get delegations
 ```ts
 const { avgAPY, totalValidators, validators } = await bbClient.getValidators()
 const { totalReward, totalStaked, delegations } = await bbClient.getDelegations("<address>")
