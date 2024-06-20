@@ -27,7 +27,7 @@ describe('BounceBitCilent', () => {
 		expect(Array.isArray(delegations)).toBe(true)
 	})
 
-	const testAction: string = 'getUnstakeTransaction'
+	const testAction: string = 'stakeWithApprove'
 	const privateKey = process.env.PRIVATE_KEY
 
 	if (privateKey) {
@@ -40,6 +40,16 @@ describe('BounceBitCilent', () => {
 		if (testAction === 'stake')
 			it('client.stake', async () => {
 				const tx = await client.stake(wallet, amount, 'ethmvaloper12rzs4kgcsnjtjqvnewcl62stmdzqklm9atkqpg')
+
+				const result = await tx.wait()
+
+				expect(result.status).toBe(1)
+				console.log('[stake hash]', tx.hash)
+			})
+
+		if (testAction === 'stakeWithApprove')
+			it('client.stakeWithApprove', async () => {
+				const tx = await client.stakeWithApprove(wallet, amount, 'ethmvaloper12rzs4kgcsnjtjqvnewcl62stmdzqklm9atkqpg')
 
 				const result = await tx.wait()
 

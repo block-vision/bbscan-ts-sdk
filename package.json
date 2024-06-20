@@ -22,6 +22,7 @@
   "dependencies": {
     "@evmos/address-converter": "^0.1.9",
     "axios": "^1.6.8",
+    "bignumber.js": "^9.1.2",
     "ethers": "^6.11.1"
   },
   "devDependencies": {
