@@ -8,6 +8,8 @@ export const TESTNET_RPC = 'https://fullnode-testnet.bouncebitapi.com/'
 
 export const MAINNET_RPC = 'https://fullnode-mainnet.bouncebitapi.com/'
 
+export const DEVNET_RPC = 'https://fullnode-devnet.bouncebitapi.com/'
+
 export function getStakingSignerContract(signer: JsonRpcSigner | Wallet | JsonRpcProvider) {
 	return new Contract('0x0000000000000000000000000000000000000800', stakingAbi, signer)
 }

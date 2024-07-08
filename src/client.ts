@@ -1,5 +1,5 @@
 import { Contract, ContractTransaction, ContractTransactionResponse, JsonRpcProvider, JsonRpcSigner, Wallet } from 'ethers'
-import { MAINNET_RPC, TESTNET_RPC, getDistributionSignerContract, getStakingContract, getStakingSignerContract } from './contract'
+import { DEVNET_RPC, MAINNET_RPC, TESTNET_RPC, getDistributionSignerContract, getStakingContract, getStakingSignerContract } from './contract'
 import axios from 'axios'
 import { ethToEthermint } from '@evmos/address-converter'
 import { DelegationsResponse, ValidatorsResponse } from './types'
@@ -8,14 +8,16 @@ import BigNumber from 'bignumber.js'
 const MAX_APPROVAL_HEX = '0xfffffffffffffffffffffffa0e34bcf70a96e176cbaf886d6228000000000000'
 
 export class BounceBitClient {
-	private network: 'testnet' | 'mainnet'
+	private network: 'testnet' | 'mainnet' | 'devnet'
 	private provider: JsonRpcProvider
 	private stakingContract: Contract
 
-	constructor(network: 'mainnet' | 'testnet') {
+	constructor(network: 'mainnet' | 'testnet' | 'devnet') {
 		this.network = network
 
-		if (this.network === 'testnet') {
+		if (this.network === 'devnet') {
+			this.provider = new JsonRpcProvider(DEVNET_RPC, undefined, { pollingInterval: 2000, staticNetwork: true, batchMaxSize: 1 })
+		} else if (this.network === 'testnet') {
 			this.provider = new JsonRpcProvider(TESTNET_RPC, undefined, { pollingInterval: 2000, staticNetwork: true, batchMaxSize: 1 })
 		} else if (this.network === 'mainnet') {
 			this.provider = new JsonRpcProvider(MAINNET_RPC, undefined, { pollingInterval: 2000, staticNetwork: true, batchMaxSize: 1 })
